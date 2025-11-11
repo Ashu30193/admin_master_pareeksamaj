@@ -10,8 +10,8 @@ export const hostname = () => {
   let hostUrl = '';
   switch (window.location.hostname) {
     default:
-      // hostUrl = 'http://localhost:8080';
-      hostUrl = 'https://api.pareeksamaj.in';
+      hostUrl = 'http://localhost:4000';
+      // hostUrl = 'https://api.pareeksamaj.in';
       break;
   }
   return hostUrl;
