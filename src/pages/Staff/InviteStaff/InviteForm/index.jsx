@@ -57,7 +57,7 @@ const InviteForm = ({ form }) => {
                   callApi(
                     {
                       uriEndPoint: {
-                        uri: '/user/isExistingLoginId',
+                        uri: '/admin/isExistingLoginId',
                         method: 'GET',
                         version: '',
                       },
@@ -69,9 +69,17 @@ const InviteForm = ({ form }) => {
                       disableNotifications: true,
                     },
                   )
-                    .then(() => Promise.resolve())
+                    .then((res) => {
+                      if (res.exists) {
+                        return Promise.reject('Email already exists. Try again!');
+                      }
+                      return Promise.resolve();
+                    })
                     // eslint-disable-next-line prefer-promise-reject-errors
-                    .catch(() => Promise.reject('Email already exists. Try again!'))
+                    .catch((err) => {
+                      if (typeof err === 'string') return Promise.reject(err);
+                      return Promise.reject('Email already exists. Try again!');
+                    })
                 );
               },
             }),

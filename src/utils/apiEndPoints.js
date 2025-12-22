@@ -26,7 +26,7 @@ const apiEndPoints = {
       v1: {
         ...defaults.methods.GET,
         ...defaults.versions.v1,
-        uri: '/user/:id',
+        uri: '/admin/:id',
       },
     },
     updateCurrent: {
@@ -71,7 +71,7 @@ const apiEndPoints = {
       v1: {
         ...defaults.methods.GET,
         ...defaults.versions.v1,
-        uri: '/user/isExistingLoginId',
+        uri: '/admin/isExistingLoginId',
       },
     },
     fetchUsers: {
