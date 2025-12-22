@@ -25,6 +25,22 @@ const getRenderUserList = (usersList) => {
 
 const defaultRender = (value) => value || '-';
 
+// Helper to safely render values that might be objects with {isPrivate, <field>_value} structure
+const safeRender = (value, valueKey) => {
+  if (value === null || value === undefined) return '-';
+  if (typeof value === 'object') {
+    // Try common value key patterns
+    const keys = valueKey ? [valueKey] : Object.keys(value).filter(k => k !== 'isPrivate');
+    for (const key of keys) {
+      if (value[key] !== undefined && value[key] !== null) {
+        return value[key];
+      }
+    }
+    return '-';
+  }
+  return value || '-';
+};
+
 const Users = ({ dispatch, loading, usersList }) => {
   const [startIndex, setStartIndex] = useState(1);
   const [viewSize, setViewSize] = useState(10);
@@ -108,19 +124,19 @@ const Users = ({ dispatch, loading, usersList }) => {
 
   const expandedRowRender = (record) => (
     <Descriptions bordered title="Details">
-      <Descriptions.Item label="Phone">{record?.phone}</Descriptions.Item>
-      <Descriptions.Item label="Annual Income">{record?.annual_income}</Descriptions.Item>
-      <Descriptions.Item label="Manglik">{record?.manglik}</Descriptions.Item>
-      <Descriptions.Item label="Children">{record?.family?.children}</Descriptions.Item>
-      <Descriptions.Item label="Spouse">{record?.spouse}</Descriptions.Item>
-      <Descriptions.Item label="Grand Father">{record?.grandfather}</Descriptions.Item>
-      <Descriptions.Item label="Father">{record?.father}</Descriptions.Item>
-      <Descriptions.Item label="Address">{record?.address_line1}</Descriptions.Item>
-      <Descriptions.Item label="Clan">{record?.clan}</Descriptions.Item>
-      <Descriptions.Item label="Marital Status">{record?.marital_status}</Descriptions.Item>
-      <Descriptions.Item label="Marriage Date">{record?.marriage_date}</Descriptions.Item>
-      <Descriptions.Item label="PAN">{record?.pan}</Descriptions.Item>
-      <Descriptions.Item label="Aadhaar">{record?.aadharcard}</Descriptions.Item>
+      <Descriptions.Item label="Phone">{safeRender(record?.phone)}</Descriptions.Item>
+      <Descriptions.Item label="Annual Income">{safeRender(record?.annual_income)}</Descriptions.Item>
+      <Descriptions.Item label="Manglik">{safeRender(record?.manglik, 'manglik_value')}</Descriptions.Item>
+      <Descriptions.Item label="Children">{safeRender(record?.family?.children)}</Descriptions.Item>
+      <Descriptions.Item label="Spouse">{safeRender(record?.spouse)}</Descriptions.Item>
+      <Descriptions.Item label="Grand Father">{safeRender(record?.grandfather)}</Descriptions.Item>
+      <Descriptions.Item label="Father">{safeRender(record?.father)}</Descriptions.Item>
+      <Descriptions.Item label="Address">{safeRender(record?.address_line1)}</Descriptions.Item>
+      <Descriptions.Item label="Clan">{safeRender(record?.clan)}</Descriptions.Item>
+      <Descriptions.Item label="Marital Status">{safeRender(record?.marital_status, 'marital_status_value')}</Descriptions.Item>
+      <Descriptions.Item label="Marriage Date">{safeRender(record?.marriage_date)}</Descriptions.Item>
+      <Descriptions.Item label="PAN">{safeRender(record?.pan)}</Descriptions.Item>
+      <Descriptions.Item label="Aadhaar">{safeRender(record?.aadharcard)}</Descriptions.Item>
     </Descriptions>
   );
 

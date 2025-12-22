@@ -9,7 +9,7 @@ export async function getFakeCaptcha(mobile) {
 export const userLogin = ({ body }) =>
   Axios({
     method: 'post',
-    url: `${hostname()}/user/login`,
+    url: `${hostname()}/admin/login`,
     timeout: 10000,
     data: body,
   })

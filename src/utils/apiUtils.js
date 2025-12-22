@@ -9,8 +9,11 @@ import { history } from 'umi';
 export const hostname = () => {
   let hostUrl = '';
   switch (window.location.hostname) {
-    default:
+    case 'localhost':
       hostUrl = 'http://localhost:4000';
+      break;
+    default:
+      hostUrl = 'http://15.207.87.131/api';
       // hostUrl = 'https://api.pareeksamaj.in';
       break;
   }

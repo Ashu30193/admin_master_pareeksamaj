@@ -59,7 +59,7 @@ const InviteForm = ({ form }) => {
                       uriEndPoint: {
                         uri: '/user/isExistingLoginId',
                         method: 'GET',
-                        version: '/xapi/v1',
+                        version: '',
                       },
                       query: {
                         user_id: value,
