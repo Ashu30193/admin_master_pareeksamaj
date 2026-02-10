@@ -13,8 +13,7 @@ export const hostname = () => {
       hostUrl = 'http://localhost:4000';
       break;
     default:
-      hostUrl = 'http://15.207.87.131/api';
-      // hostUrl = 'https://api.pareeksamaj.in';
+      hostUrl = 'https://pareeksamaj.in/api';
       break;
   }
   return hostUrl;
