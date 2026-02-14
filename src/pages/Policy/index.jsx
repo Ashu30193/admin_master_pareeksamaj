@@ -21,153 +21,199 @@ const PrivacyPolicy = () => {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      padding: '40px 20px'
+      backgroundColor: '#ffffff',
+      fontFamily: '"Times New Roman", Times, Georgia, serif'
     }}>
-      <div style={{
-        maxWidth: '900px',
-        margin: '0 auto',
-        backgroundColor: '#ffffff',
-        borderRadius: '16px',
-        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
-        overflow: 'hidden'
+      {/* Header */}
+      <header style={{
+        backgroundColor: '#000000',
+        padding: '60px 20px',
+        textAlign: 'center',
+        borderBottom: '4px solid #000000'
       }}>
-        {/* Header */}
-        <div style={{
-          background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
-          padding: '40px',
-          textAlign: 'center'
+        <h1 style={{
+          color: '#ffffff',
+          fontSize: '42px',
+          fontWeight: '400',
+          margin: 0,
+          letterSpacing: '8px',
+          textTransform: 'uppercase',
+          fontFamily: '"Times New Roman", Times, Georgia, serif'
         }}>
-          <h1 style={{
-            color: '#ffffff',
-            fontSize: '32px',
-            fontWeight: '700',
-            margin: '0 0 10px 0',
-            textTransform: 'uppercase',
+          Privacy Policy
+        </h1>
+        <div style={{
+          width: '80px',
+          height: '2px',
+          backgroundColor: '#ffffff',
+          margin: '20px auto 0'
+        }} />
+        <p style={{
+          color: '#cccccc',
+          fontSize: '14px',
+          marginTop: '15px',
+          letterSpacing: '3px',
+          textTransform: 'uppercase'
+        }}>
+          Pareek Samaj App
+        </p>
+      </header>
+
+      {/* Content */}
+      <main style={{
+        maxWidth: '800px',
+        margin: '0 auto',
+        padding: '60px 40px'
+      }}>
+        {/* Introduction */}
+        <section style={{
+          marginBottom: '50px',
+          paddingBottom: '40px',
+          borderBottom: '1px solid #e0e0e0'
+        }}>
+          <h2 style={{
+            fontSize: '24px',
+            fontWeight: '400',
+            color: '#000000',
+            marginBottom: '20px',
             letterSpacing: '2px'
           }}>
-            Privacy Policy
-          </h1>
+            Terms & Conditions
+          </h2>
           <p style={{
-            color: '#a0a0a0',
+            color: '#333333',
             fontSize: '16px',
-            margin: 0
+            lineHeight: '1.9',
+            textAlign: 'justify'
           }}>
-            Pareek Samaj App - Terms and Conditions
+            Welcome to Pareek Samaj App. By accessing or using our services, you acknowledge
+            that you have read, understood, and agree to be bound by the following terms and
+            conditions. Please review them carefully before proceeding.
           </p>
-        </div>
+        </section>
 
-        {/* Content */}
-        <div style={{ padding: '40px' }}>
-          <div style={{
-            backgroundColor: '#f8f9fa',
-            borderRadius: '12px',
-            padding: '30px',
-            marginBottom: '30px'
+        {/* Policy Items */}
+        <section>
+          <ol style={{
+            listStyle: 'none',
+            padding: 0,
+            margin: 0,
+            counterReset: 'policy-counter'
           }}>
-            <p style={{
-              color: '#555',
-              fontSize: '15px',
-              lineHeight: '1.8',
-              margin: 0
-            }}>
-              Welcome to Pareek Samaj App. By using our services, you agree to comply with and be bound by the following terms and conditions. Please read them carefully before using the app.
-            </p>
-          </div>
-
-          {/* Policy Items */}
-          <div>
             {policies.map((policy, index) => (
-              <div
+              <li
                 key={index}
                 style={{
                   display: 'flex',
-                  alignItems: 'flex-start',
-                  padding: '20px',
-                  marginBottom: '15px',
-                  backgroundColor: index % 2 === 0 ? '#f8f9fa' : '#ffffff',
-                  borderRadius: '10px',
-                  border: '1px solid #e9ecef',
-                  transition: 'all 0.3s ease'
+                  marginBottom: '30px',
+                  paddingBottom: '30px',
+                  borderBottom: index < policies.length - 1 ? '1px solid #e8e8e8' : 'none'
                 }}
               >
                 <div style={{
-                  minWidth: '40px',
-                  height: '40px',
-                  backgroundColor: '#667eea',
-                  borderRadius: '50%',
+                  minWidth: '50px',
+                  height: '50px',
+                  backgroundColor: '#000000',
+                  color: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginRight: '20px',
+                  fontSize: '18px',
+                  fontWeight: '400',
+                  marginRight: '25px',
                   flexShrink: 0
                 }}>
-                  <span style={{
-                    color: '#ffffff',
-                    fontWeight: '700',
-                    fontSize: '14px'
-                  }}>
-                    {index + 1}
-                  </span>
+                  {String(index + 1).padStart(2, '0')}
                 </div>
                 <p style={{
-                  color: '#333',
-                  fontSize: '14px',
-                  lineHeight: '1.7',
+                  color: '#222222',
+                  fontSize: '15px',
+                  lineHeight: '1.8',
                   margin: 0,
-                  fontWeight: '500'
+                  textAlign: 'justify',
+                  paddingTop: '12px'
                 }}>
                   {policy}
                 </p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
+        </section>
 
-          {/* Footer Note */}
-          <div style={{
-            marginTop: '40px',
-            padding: '25px',
-            backgroundColor: '#fff3cd',
-            borderRadius: '10px',
-            borderLeft: '4px solid #ffc107'
+        {/* Important Notice */}
+        <section style={{
+          marginTop: '50px',
+          padding: '35px',
+          backgroundColor: '#f8f8f8',
+          border: '2px solid #000000'
+        }}>
+          <h3 style={{
+            fontSize: '14px',
+            fontWeight: '700',
+            color: '#000000',
+            marginBottom: '15px',
+            letterSpacing: '3px',
+            textTransform: 'uppercase'
           }}>
-            <p style={{
-              color: '#856404',
-              fontSize: '14px',
-              lineHeight: '1.6',
-              margin: 0,
-              fontWeight: '500'
-            }}>
-              <strong>Important Notice:</strong> By using the Pareek Samaj App, you acknowledge that you have read, understood, and agree to be bound by these terms and conditions. The app reserves the right to modify these policies at any time without prior notice.
-            </p>
-          </div>
+            Important Notice
+          </h3>
+          <p style={{
+            color: '#333333',
+            fontSize: '14px',
+            lineHeight: '1.8',
+            margin: 0,
+            textAlign: 'justify'
+          }}>
+            By using the Pareek Samaj App, you acknowledge that you have read, understood,
+            and agree to be bound by these terms and conditions. The app reserves the right
+            to modify these policies at any time without prior notice. Continued use of the
+            app following any changes constitutes acceptance of the revised terms.
+          </p>
+        </section>
 
-          {/* Contact Section */}
-          <div style={{
-            marginTop: '30px',
-            textAlign: 'center',
-            padding: '20px',
-            backgroundColor: '#f8f9fa',
-            borderRadius: '10px'
+        {/* Jurisdiction */}
+        <section style={{
+          marginTop: '40px',
+          textAlign: 'center',
+          padding: '30px',
+          backgroundColor: '#000000'
+        }}>
+          <p style={{
+            color: '#ffffff',
+            fontSize: '13px',
+            letterSpacing: '2px',
+            textTransform: 'uppercase',
+            margin: 0
           }}>
-            <p style={{
-              color: '#666',
-              fontSize: '14px',
-              margin: 0
-            }}>
-              For any queries or concerns, please contact us through the app support section.
-            </p>
-            <p style={{
-              color: '#999',
-              fontSize: '12px',
-              marginTop: '15px',
-              marginBottom: 0
-            }}>
-              &copy; {new Date().getFullYear()} Pareek Samaj. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </div>
+            Jurisdiction: Hyderabad, India
+          </p>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer style={{
+        backgroundColor: '#000000',
+        padding: '40px 20px',
+        textAlign: 'center',
+        marginTop: '60px'
+      }}>
+        <p style={{
+          color: '#888888',
+          fontSize: '12px',
+          letterSpacing: '2px',
+          margin: 0
+        }}>
+          &copy; {new Date().getFullYear()} PAREEK SAMAJ. ALL RIGHTS RESERVED.
+        </p>
+        <p style={{
+          color: '#666666',
+          fontSize: '11px',
+          marginTop: '10px',
+          letterSpacing: '1px'
+        }}>
+          For queries, contact us through the app support section.
+        </p>
+      </footer>
     </div>
   );
 };
