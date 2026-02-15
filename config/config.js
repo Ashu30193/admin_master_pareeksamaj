@@ -61,6 +61,11 @@ export default defineConfig({
       component: './Policy',
     },
     {
+      path: '/child-safety',
+      name: 'childSafety',
+      component: './ChildSafety',
+    },
+    {
       path: '/',
       component: '../layouts/UserLayout',
       component: '../layouts/SecurityLayout',
