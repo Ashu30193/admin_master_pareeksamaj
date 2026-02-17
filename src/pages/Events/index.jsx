@@ -21,8 +21,8 @@ const Events = ({ loading, dispatch, news, events }) => {
     getEvents();
   }, [start]);
 
-  const deleteNews = (id) =>
-    dispatch({ type: 'common/newsDelete', payload: { pathParams: { id } } }).then(() =>
+  const deleteEvent = (id) =>
+    dispatch({ type: 'common/deleteEvent', payload: { pathParams: { id } } }).then(() =>
       getEvents(),
     );
 
@@ -50,10 +50,10 @@ const Events = ({ loading, dispatch, news, events }) => {
       title: 'Actions',
       render: (_, data) => (
         <Popconfirm
-          title="Are you sure you want to delete this News?"
+          title="Are you sure you want to delete this Event?"
           placement="left"
           okText="Delete"
-          onConfirm={() => deleteNews(data._id)}
+          onConfirm={() => deleteEvent(data._id)}
         >
           <a className="text-red-700 hover:text-red-800">
             <DeleteOutlined /> Delete

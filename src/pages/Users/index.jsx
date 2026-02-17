@@ -95,6 +95,15 @@ const Users = ({ dispatch, loading, usersList }) => {
       render: defaultRender,
     },
     {
+      title: 'Age',
+      dataIndex: 'dob',
+      render: (dob) => {
+        if (!dob) return '-';
+        const age = moment().diff(moment(dob), 'years');
+        return age > 0 ? `${age} yrs` : '-';
+      },
+    },
+    {
       title: 'Active',
       dataIndex: 'isActive',
       render: (value) => (value ? 'Yes' : 'No'),
@@ -125,6 +134,9 @@ const Users = ({ dispatch, loading, usersList }) => {
   const expandedRowRender = (record) => (
     <Descriptions bordered title="Details">
       <Descriptions.Item label="Phone">{safeRender(record?.phone)}</Descriptions.Item>
+      <Descriptions.Item label="Date of Birth">
+        {record?.dob ? moment(record.dob).format('LL') : '-'}
+      </Descriptions.Item>
       <Descriptions.Item label="Annual Income">{safeRender(record?.annual_income)}</Descriptions.Item>
       <Descriptions.Item label="Manglik">{safeRender(record?.manglik, 'manglik_value')}</Descriptions.Item>
       <Descriptions.Item label="Children">{safeRender(record?.family?.children)}</Descriptions.Item>

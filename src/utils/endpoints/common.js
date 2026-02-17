@@ -36,6 +36,9 @@ export const common = {
   updateProduct: {
     v1: { ...defaults.methods.PUT, ...defaults.versions.v1, uri: '/products/:productId' },
   },
+  deleteProduct: {
+    v1: { ...defaults.methods.DELETE, ...defaults.versions.v1, uri: '/products/:productId' },
+  },
   createNews: { v1: { ...defaults.methods.POST, ...defaults.versions.v1, uri: '/news' } },
   getNews: { v1: { ...defaults.methods.GET, ...defaults.versions.v1, uri: '/news' } },
   newsDelete: { v1: { ...defaults.methods.DELETE, ...defaults.versions.v1, uri: '/news/:id' } },

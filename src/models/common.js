@@ -2,6 +2,7 @@ import {
   createEvent,
   createNews,
   deleteEvent,
+  deleteProduct,
   getCountriesList,
   getCountryStates,
   getEvents,
@@ -59,6 +60,10 @@ const Model = {
     },
     *updateProduct({ payload }, { call }) {
       const res = yield call(updateProduct, payload);
+      return res;
+    },
+    *deleteProduct({ payload }, { call }) {
+      const res = yield call(deleteProduct, payload);
       return res;
     },
     *createNews({ payload }, { call }) {

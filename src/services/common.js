@@ -56,6 +56,11 @@ export const updateProduct = ({ pathParams, body }) =>
     .then((res) => res)
     .catch((err) => err);
 
+export const deleteProduct = ({ pathParams }) =>
+  callApi({ uriEndPoint: common.deleteProduct.v1, pathParams })
+    .then((res) => res)
+    .catch((err) => err);
+
 export const createNews = ({ body }) =>
   callApi({ uriEndPoint: common.createNews.v1, body })
     .then((res) => res)
@@ -87,6 +92,6 @@ export const createEvent = ({ body }) =>
     .catch((err) => err);
 
 export const deleteEvent = ({ pathParams }) =>
-  callApi({ uriEndPoint: common.newsDelete.v1, pathParams })
+  callApi({ uriEndPoint: common.deleteEvent.v1, pathParams })
     .then((res) => res)
     .catch((err) => err);

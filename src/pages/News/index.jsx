@@ -57,10 +57,12 @@ const News = ({ loading, dispatch, news }) => {
     {
       title: 'Description',
       dataIndex: 'description',
-      render: (data) =>
-        stripHtml(data) && stripHtml(data).length > 50
-          ? `${stripHtml(data).slice(0, 50)}...`
-          : stripHtml(data),
+      render: (data) => (
+        <div
+          style={{ maxHeight: 200, overflow: 'auto', maxWidth: 400 }}
+          dangerouslySetInnerHTML={{ __html: data }}
+        />
+      ),
     },
 
     {
